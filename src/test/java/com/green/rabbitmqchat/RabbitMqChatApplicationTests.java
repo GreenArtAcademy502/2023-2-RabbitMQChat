@@ -1,0 +1,13 @@
+package com.green.rabbitmqchat;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class RabbitMqChatApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}

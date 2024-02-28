@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- env 설정 파일 적용 -->
+    <script src="env.js"></script>
+    <title>방 만들기</title>
+
+    <script src="core-js/room-create.js"></script>
+    <style>
+        /* 전체 페이지를 가운데 정렬하기 위한 스타일 */
+        html,
+        body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="popup" class="popup-overlay">
+        <div class="popup-content">
+            <h1>방 만들기</h1>
+            <p><input type='text' id='other_person_iuser' placeholder='상대방 iuser'></p>
+            <button onclick='createRoom()'>방 만들기</button>
+        </div>
+    </div>
+</body>
+
+</html>

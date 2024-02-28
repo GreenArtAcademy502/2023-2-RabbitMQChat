@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+              .container {
+            display: flex;
+        }
+
+        .chatbox,
+        .userlist {
+            flex: 1;
+            margin-right: 10px;
+        }
+    </style>
+<script>
+    
+
+</script>
+  	<!-- env 설정 파일 적용 -->
+	  <script src="env.js"></script>
+
+    <!-- websocket 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <script src="core-js/stomp.js"></script>
+
+
+    <!-- chat css-->
+    <link rel="stylesheet" href="core-css/chat.css">
+</head>
+
+<body>
+
+    <div class="p-4" style="padding: 0rem!important;">
+        <h4 class="fst-italic">채팅방</h4>
+        
+        <div class="container">
+          <div class="chatbox" id="chatbox"></div>
+          <div style="display: flex; flex-direction: column;">
+
+          <div class="userlistSub" id="userlistSub"><span style="font-weight: bold;">참여자</span></div>
+          <div class="userlist" id="userlist"></div>
+          </div>
+      </div>
+      
+        <div class="inputbox">
+          <form onsubmit="return false;">
+            <input type="text" id="messageContent" placeholder="메시지를 입력하세요...">
+            <input id="sendButton" type="submit" value="전송" onclick="sendMessage()">
+            <p></p>
+          </form>
+        </div>
+
+      </div>
+
+</body>
+</html>

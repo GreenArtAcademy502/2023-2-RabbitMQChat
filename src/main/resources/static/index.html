@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>채팅방</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- env 설정 파일 적용 -->
+	<script src="env.js"></script>
+
+	<!-- 방 api-->
+	<script src="core-js/room-list.js"></script>
+
+	<script>
+
+		function showPopup() { 
+			window.open("room-create.html", "a", "width=500, height=300, left=100, top=50");
+		}
+
+	</script>
+
+	<script>
+		function login(){
+			window.location.href = 'login.html';
+		}
+	</script>
+</head>
+
+
+
+<body>
+	<button onclick="login()">login</button>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">채팅방</h2>
+				</div>
+			</div>
+
+			<button onclick="showPopup()">방 만들기</button>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th>no.</th>
+									<th>이름</th>
+								</tr>
+							</thead>
+							<tbody id="roomlist">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>

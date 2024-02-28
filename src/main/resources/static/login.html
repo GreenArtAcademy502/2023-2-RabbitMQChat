@@ -1,0 +1,100 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #008CBA;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #005f77;
+        }
+    </style>
+    <!-- env 설정 파일 적용 -->
+    <script type="text/javascript" src="env.js"></script>
+</head>
+<form id="login-form">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+    </div>
+    <button type="submit">Login</button>
+</form>
+
+<script>
+    const form = document.getElementById('login-form');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const credentials = { uid: username, upw: password };
+
+        fetch(`/api/user/signin`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    response.json().then(error => {
+                        console.log(error);
+                        alert(error.message);
+                    });
+                } else {
+                    //var token = response.headers.get('Authorization');
+                    response.json().then(res => {
+                        const token = res.accessToken
+                        localStorage.setItem('access_token', token);
+                        window.location.href = 'index.html';
+                    })
+
+                }
+                
+            }).catch(error =>{
+                alert("예상치 못한 오류가 발생하였습니다.");
+                console.error(error);
+            }); 
+    });
+</script>
