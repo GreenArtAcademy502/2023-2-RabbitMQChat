@@ -23,8 +23,8 @@ public class StompConfiguration implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.setErrorHandler(stompErrorHandler)
                 .addEndpoint(properties.getStompEndPoint())
-                .setAllowedOriginPatterns(properties.getStompAllowedOriginPatterns())
-                .withSockJS();
+                .setAllowedOriginPatterns(properties.getStompAllowedOriginPatterns());
+                //.withSockJS();
     }
 
     @Override //메세지 브로커를 설정

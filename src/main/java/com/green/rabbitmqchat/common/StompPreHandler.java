@@ -33,7 +33,6 @@ public class StompPreHandler implements ChannelInterceptor {
     private final AppProperties appProperties;
     private final JwtTokenProvider jwtTokenProvider;
 
-
     @Override
     public Message<?> preSend(Message<?> message, MessageChannel channel) {
         StompHeaderAccessor accessor = StompHeaderAccessor.wrap(message);
@@ -41,6 +40,7 @@ public class StompPreHandler implements ChannelInterceptor {
         if(StompCommand.CONNECT.equals(accessor.getCommand())) {
             //헤더 토큰 얻기
             String authorizationHeader = accessor.getNativeHeader(appProperties.getJwt().getHeaderSchemeName()) == null ? null : String.valueOf(accessor.getNativeHeader(appProperties.getJwt().getHeaderSchemeName()).get(0));
+            log.info("authorizationHeader: {}", authorizationHeader);
             if(authorizationHeader == null || authorizationHeader.equals("null")) {
                 //throw new MessageDeliveryException("토큰이 존재하지 않습니다.");
                 throw new RestApiException(ChatErrorCode.NOT_EXIST_TOKEN);
