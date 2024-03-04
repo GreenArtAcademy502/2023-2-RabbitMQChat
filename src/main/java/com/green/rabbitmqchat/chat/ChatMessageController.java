@@ -29,7 +29,8 @@ public class ChatMessageController {
     private final AppProperties appProperties;
 
     @MessageMapping("chat.message.{ichatRoom}")
-    public void send(ChatDto dto, @DestinationVariable long ichatRoom, StompHeaderAccessor accessor) {
+    public void send(ChatDto dto, @DestinationVariable long ichatRoom) {
+        /*
         String authorizationHeader = accessor.getNativeHeader(appProperties.getJwt().getHeaderSchemeName()) == null ? null : String.valueOf(accessor.getNativeHeader(appProperties.getJwt().getHeaderSchemeName()).get(0));
         String token = authorizationHeader.substring(appProperties.getJwt().getTokenType().length() + 1);
         UsernamePasswordAuthenticationToken auth = (UsernamePasswordAuthenticationToken)jwtTokenProvider.getAuthentication(token);
@@ -40,7 +41,9 @@ public class ChatMessageController {
             dto.setSendIuser(myPrincipal.getIuser());
             dto.setSendUserNm(myPrincipal.getNm());
         }
-
+*/
+        dto.setSendIuser(1);
+        dto.setSendUserNm("홍길동");
         dto.setIchatRoom(ichatRoom);
         dto.setCreatedAt(LocalDateTime.now());
         service.send(dto);

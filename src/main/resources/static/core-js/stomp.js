@@ -62,6 +62,8 @@ function sendMessage() {
     'header2': 'value2',
     };*/
 
-    stompClient.send(`/pub/chat.message.${ichatRoom}`, { Authorization: `Bearer ${localStorage.getItem("access_token")}`}, JSON.stringify(ChatRequest));
+    stompClient.send(`/pub/chat.message.${ichatRoom}`, JSON.stringify(ChatRequest));
 
+    // react에서 작업한 레퍼런스
+    //https://medium.com/@woal9844/stomp-js-%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-websocket-%EC%97%B0%EB%8F%99-c9f0ef6ab540
 }
