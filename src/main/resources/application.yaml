@@ -28,7 +28,6 @@ spring:
   jpa:
     open-in-view: false # api 의 요청부터 응답까지 영속성 컨텍스트가 유지 default = true
     hibernate:
-      dialect: org.hibernate.dialect.MySQLInnoDBDialect
       ddl-auto: create
     properties:
       hibernate:
@@ -46,3 +45,23 @@ app:
 
 file:
   dir: D:/download/rabbitmqChat/
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+  datasource:
+    url: jdbc:mariadb://192.168.0.144:3306/team_a
+    username: team_a
+    password: green502
+  jpa:
+    open-in-view: false # api 의 요청부터 응답까지 영속성 컨텍스트가 유지 default = true
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+
+
+file:
+  dir: /home/download
